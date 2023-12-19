@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      text-align: center;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      font-size: 24px;
+    }
+
+    section {
+      max-width: 600px;
+      margin: 20px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 50%;
+      margin-top: 10px;
+    }
+
+    p {
+      margin: 10px 0;
+    }
+
+    .card {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-body {
+      border-radius: 25px;
+    }
+
+    /* Styling for the form elements */
+    .form-outline {
+      width: 100%;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    /* Styling for the submit button */
+    .btn-outline-dark {
+      background-color: transparent;
+      border-color: #343a40;
+      color: #343a40;
+    }
+
+    .btn-outline-dark:hover {
+      background-color: #343a40;
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>User Profile</h1>
+  </header>
+  <section>
+    {% if user_profile %}
+    {% for i in user_profile %}
+    <p>Username: <strong>{{ i.user.username }}</strong></p>
+    <p>City: <strong>{{ i.city }}</strong></p>
+    <p>Phone: <strong>{{ i.phone }}</strong></p>
+    <img src="{{ i.image.url }}" alt="Profile Picture">
+    <!-- Date Created is commented out as it's not available in the template -->
+    <!-- <p>Date Created: <strong>{{ user_profile.date_created }}</strong></p> -->
+    {% endfor %}
+    {% else %}
+    <section class="h-100 h-custom my-6" style="background-color: #eee">
+      <div class="container h-100" style="margin-top: 90px">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-lg-12 col-xl-11">
+            <div class="card text-black" style="border-radius: 25px">
+              <div class="card-body p-md-5">
+                <div class="row justify-content-center">
+                  <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                    <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
+                      Create Profile
+                    </p>
+                    <form method="post" enctype="multipart/form-data">
+                      {% csrf_token %}
+                      <div class="d-flex flex-row align-items-center mb-4">
+                        <div class="form-outline flex-fill mb-0">
+                          <label for="city">City:</label>
+                          <input type="text" name="city" id="city" /><br />
+                        </div>
+                      </div>
+                      <div class="d-flex flex-row align-items-center mb-4">
+                        <div class="form-outline flex-fill mb-0">
+                          <label for="phone">Phone:</label>
+                          <input type="text" name="phone" id="phone" /><br />
+                        </div>
+                      </div>
+                      <div class="d-flex flex-row align-items-center mb-4">
+                        <div class="form-outline flex-fill mb-0">
+                          <label for="image">Profile Picture:</label>
+                          <input type="file" name="image" id="image" /><br />
+                        </div>
+                      </div>
+
+                      <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                        <button type="submit" class="btn btn-outline-dark">
+                          Create Profile
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    {% endif %}
+  </section>
+</body>
+
+</html>

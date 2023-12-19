@@ -1,0 +1,156 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+        integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href={% static "home_services/bootstrap.css" %}>
+    <!-- <link rel="stylesheet" href={% static "home_services/style.css" %}> -->
+    <link rel="stylesheet" href={% static "home_services/webstyle.css" %}>
+    {% comment %} <link rel="stylesheet" href={% static "home_services/newstyle.css" %}> {% endcomment %}
+</head>
+
+<body>
+    <div id="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div id="logo">
+                        <h1>Helping Hand</h1>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <ul id="menu" class="float-md-right">
+                        <li><a href="">Home</a></li>
+                        <li><a href="">About us</a></li>
+                        <li><a href="">Gallery</a></li>
+                        <li><a href={% url "home_services:provider_form" %}> Technicain </a></li>
+                        <li><a href={% url "user_profile:logout" %}> Logout </a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="banner" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-lg-6">
+                    <div class="banner-title">
+                        <h1 class="title" style="text-decoration-color: black;">Welcome to Helping Hand</h1>
+                        <p class="lead">
+                            🏡 Where home services meet convenience! Transform your living spaces with expert care. Discover hassle-free living and make your home the best place to be. 🛠️🌿
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container section">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="section-head">Our Services</h2>
+            </div>
+            {% for service in object_list %}
+                <div class="col-sm-6 col-md-4">
+                    <div class="service-box">
+                        <i class="fas fa-wrench"></i>
+                        <ul id="services">
+                            <li>
+                                <a href="{% url 'home_services:customer_form' %}">
+                                {{ service.ServiceName }}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    </div>
+    <!-- <header>
+        <nav>
+            <div id="logo"><img src="../static/student/logo2.png" alt="Helping Hand"></div>
+            <a href={% url "home_services:provider_form" %} style="color:blue;"> Technicain </a>
+            <a href={% url "user_profile:logout" %} style="color:blue;"> Logout </a>
+        </nav>
+    </header> -->
+
+    <!-- <main>
+
+        {% for object in object_list %}
+        <ul id="services">
+            <li>
+                <a href={% url "home_services:customer_form" %}>
+                    {{ object.ServiceName }}
+                </a>
+            </li>
+        </ul>
+        {% endfor %}
+
+    </main> -->
+    <div class="container section">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="section-head">About Us</h2>
+                <p>
+                    Welcome to Helping Hand, your go-to destination for reliable home services. Our mission is to transform your living spaces with expert care, providing hassle-free solutions for all your home needs. At Helping Hand, we believe in making your home the best place to be.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="container section">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="section-head">Contact Us</h2>
+                <p>
+                    Have questions or need assistance? Reach out to us! Fill out the form below, and our team will get back to you as soon as possible.
+                </p>
+                <form >
+                    {% csrf_token %}
+                    <!-- Add your form fields here -->
+                    <div class="form-group">
+                        <label for="name">Your Name:</label>
+                        <input type="text" name="name" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email:</label>
+                        <input type="email" name="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Message:</label>
+                        <textarea name="message" id="message" rows="4" required></textarea>
+                    </div>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    {% comment %} <footer>
+        <nav>
+            <p style="color:blue;">@Copyright Helping Hand</p>
+        </nav>
+    </footer> {% endcomment %}
+    <div id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">Copy Right @2023 AK</div>
+                <div class="col-md-6">
+                    <ul id="social-icons" class="float-md-right">
+                        <li><a href=""><i class="fa-brands fa-square-facebook"></i></a></li>
+                        <li><a href=""><i class="fa-brands fa-square-twitter"></i></a></li>
+                        <li><a href=""><i class="fa-brands fa-linkedin"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

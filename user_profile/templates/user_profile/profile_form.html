@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <!-- <link rel="stylesheet" href={% static "home_services/style.css" %}> -->
+    <link rel="stylesheet" href={% static "user_profile/style.css" %}>
+</head>
+<body>
+
+    {% if has_error %}
+        {{has_error}}
+    {% endif %}
+    <div class="provider">
+        <h2>If You are a service provider fill this form</h2>
+        <form action="{% url 'user_profile:profile_submit' %}" method="POST" class="form1">
+        {% csrf_token %}
+        {{form}}
+        <input type="submit" value="Sumbit" id="submit">
+        </form>
+    </div>
+        
+    
+    <div class="customer">
+        <h2>If you want any service fill this form</h2>
+        <form action="{% url 'user_profile:customer_submit' %}" method="POST" class="form2">
+        {% csrf_token %}
+        {{customer}}
+        <input type="submit" value="Sumbit" id="submit">
+        </form>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Location Form</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=your_api_key&libraries=places"></script>
+</head>
+<body>
+    <h2>Location Form</h2>
+    <form action="{% url 'home_services:location_view' %}" method="POST" class="form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

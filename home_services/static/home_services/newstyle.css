@@ -1,0 +1,137 @@
+body {
+    font-family: 'Arial', sans-serif; /* Specify a fallback font */
+}
+
+/* Header Styling */
+#header {
+    color: #fff;
+    background-color: #e74c3c;
+    padding: 15px; /* Add some padding for better readability */
+}
+
+#logo h1 {
+    font-size: 2rem;
+    margin-top: 5px;
+    color: #fff; /* Make the logo text white */
+}
+
+#menu li a {
+    color: #fff;
+    padding: 15px 10px;
+    display: block;
+    text-decoration: none; /* Remove underline from menu links */
+}
+
+#menu li a:hover {
+    background-color: #c0392b;
+}
+
+/* Banner Styling */
+#banner {
+    background-image: url('bg.jpg'); /* Adjust the path */
+    background-size: cover;
+    color: #fff; /* Set text color for better contrast */
+    text-align: center;
+    padding: 100px 0; /* Increase padding for a more prominent look */
+}
+
+.banner-title h1 {
+    background: rgba(0, 0, 0, 0.7); /* Adjust the background color */
+    display: inline-block;
+    padding: 20px;
+    margin: 0;
+    font-size: 2.5rem; /* Increase font size for emphasis */
+}
+
+.banner-title p.lead {
+    color: #fff;
+    background: rgba(231, 76, 60, 0.7);
+    padding: 10px;
+}
+
+/* Section Styling */
+.section {
+    padding: 70px 0;
+}
+
+.section h2.section-head {
+    color: #000; /* Set the section head color to black */
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section h2.section-head::after {
+    background: #e74c3c;
+    content: "";
+    display: block;
+    width: 100px;
+    height: 3px;
+    margin: 20px auto;
+}
+
+/* Container Styling */
+.container.section {
+    background-color: #f8f9fa;
+    padding: 60px 0;
+}
+
+/* Form Styling */
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    color: #333; /* Set label color */
+}
+
+/* Button Styling */
+button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 15px 30px; /* Increase padding for better clickability */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px; /* Increase font size for emphasis */
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Testimonials Styling */
+#testimonials {
+    background: url('path/to/your/testi.jpg') no-repeat 0 0;
+    background-size: cover;
+    padding: 50px 0;
+    position: relative;
+}
+
+/* Footer Styling */
+#footer-sidebar,
+#footer {
+    color: #fff;
+    background: #34495e;
+    padding: 20px 0;
+    text-align: center;
+}
+
+#footer-sidebar h4:after {
+    content: "";
+    background: #fff;
+    display: block;
+    width: 50px;
+    height: 2px;
+    margin: 5px auto;
+}
+
+.footer-widget a {
+    color: #fff;
+}
+
+#social-icons li a i {
+    color: #fff;
+    font-size: 23px;
+}

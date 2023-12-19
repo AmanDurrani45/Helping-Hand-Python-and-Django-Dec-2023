@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <!-- <link rel="stylesheet" href={% static "home_services/style.css" %}> -->
+    {% comment %} <link rel="stylesheet" href={% static "user_profile/style.css" %}> {% endcomment %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .provider {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    {% if has_error %}
+        {{has_error}}
+    {% endif %}
+    <div class="provider">
+        <h2>If You are a service provider fill this form</h2>
+        <form action="{% url 'home_services:profile_submit' %}" method="POST" class="form1">
+            {% csrf_token %}
+            {{form}}
+            <input type="submit" value="Submit" id="submit">
+        </form>
+    </div>
+        
+    
+    {% comment %} <div class="customer">
+        <h2>If you want any service fill this form</h2>
+        <form action="{% url 'user_profile:customer_submit' %}" method="POST" class="form2">
+        {% csrf_token %}
+        {{customer}}
+        <input type="submit" value="Sumbit" id="submit">
+        </form>
+    </div>
+     {% endcomment %}
+</body>
+</html>

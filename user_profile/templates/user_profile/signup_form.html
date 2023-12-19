@@ -1,0 +1,174 @@
+<!-- {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href={% static "home_services/style.css" %}>
+    <link rel="stylesheet" href={% static "user_profile/style.css" %}>
+    <title>Sign Up</title>
+</head>
+
+<body>
+    <section id="fsignup">
+        <h1> Sign Up </h1>
+        <form action="{% url 'user_profile:sign_up' %}" method="post" class="form">
+            {% csrf_token %}
+            {% if register_message %}<p style="color: red"><strong>{{ register_message }}</strong></p>{% endif %}
+            <label for="fname">First name: </label>
+            <input type="text" value="" name="fname"> <br /><br />
+            <label for="lname">Last Name: </label>
+            <input type="text" value="" name="lname"> <br /><br />
+            <label for="email">Email: </label>
+            <input type="email" value="" name="email"> <br /><br />
+            <label for="username">Username: </label>
+            <input type="text" value="" name="username"> <br /><br />
+            <label for="password">Password: </label>
+            <input type="password" value="" name="password"> <br /><br />
+            <input type="submit" value="Sign Up" id="signup">
+        </form>
+    </section>
+
+</body>
+
+</html> -->
+
+<!-- 
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href={% static "user_profile/style.css" %}>
+	<title>Sign Up</title>
+	 <link rel="stylesheet" type="text/css" href="slide navbar style.css">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+	<div class="main">  	
+		<input type="checkbox" id="chk" aria-hidden="true">
+
+			<div class="signup">
+				<form action="{% url 'user_profile:sign_up' %}" method="post" class="form">
+                    {% csrf_token %}
+                    {% if register_message %}<p style="color: red"><strong>{{ register_message }}</strong></p>{% endif %}
+                    <input type="text" value="" name="username" placeholder="Your Username"> 
+                    <input type="email" value="" name="email" placeholder="Your Email">
+                    <input type="password" value="" name="password" placeholder="Your Password"> 
+                    
+                    <input type="submit" value="Sign Up" id="signup">
+                </form>
+              
+                
+			</div>
+
+			<div class="login">
+				<form>
+					<label for="chk" aria-hidden="true">Login</label>
+					<input type="email" name="email" placeholder="Email" required="">
+					<input type="password" name="pswd" placeholder="Password" required="">
+					<button>Login</button>
+				</form>
+			</div>
+	</div>
+</body>
+</html>  -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .signup {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form {
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        .form p {
+            color: red;
+            margin-top: -10px;
+            margin-bottom: 10px;
+        }
+
+        .form input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        #signup {
+            background-color: #4caf50;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        #signup:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="signup">
+            <form action="{% url 'user_profile:sign_up' %}" method="post" class="form" onsubmit="return validateForm()">
+                {% csrf_token %}
+                {% if register_message %}
+                    <p><strong>{{ register_message }}</strong></p>
+                {% endif %}
+                <input type="text" name="username" placeholder="Your Username" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <input type="password" id="password" name="password" placeholder="Your Password" required>
+                <input type="password" id="confirmPassword" placeholder="Re-enter Password" required>
+                <input type="submit" value="Sign Up" id="signup">
+                <button onclick="redirectToLoginPage()">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function validateForm() {
+            var password = document.getElementById('password').value;
+            var confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (password !== confirmPassword) {
+                alert('Passwords do not match.');
+                return false;
+            }
+
+            return true;
+        }
+        function redirectToLoginPage() {
+            // Replace 'your_login_page_url' with the actual URL of your login page
+            window.location.href = '{% url "user_profile:login" %}';
+        }
+    </script>
+</body>
+</html>
+

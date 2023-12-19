@@ -1,0 +1,40 @@
+{% comment %} <!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Service Information</title>
+</head>
+<body>
+
+<div class="card">
+    <h2>Service Information</h2>
+    {% for service in object_list %}
+    <p><strong>Service Title:</strong> {{ service.ServiceName }} - {{ service.Title }}</p>
+    <p><strong>Price:</strong> ${{ service.Price }}</p>
+    {% endfor %}
+</div>
+
+<div class="card">
+    <h2>Customer Information</h2>
+    <p><strong>Name:</strong> {{ customer.Name }}</p>
+    <p><strong>Cell Number:</strong> {{ customer.cell_num }}</p>
+    <p><strong>Address:</strong> {{ customer.Address }}</p>
+    <p><strong>Service Title:</strong> {{ customer.ServiceTitle }}</p>
+    <p><strong>Time and Date:</strong> {{ customer.TimeAndDate }}</p>
+</div>
+
+</body>
+</html> {% endcomment %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank you</title>
+</head>
+<body>
+    We got your order. The technician will be soon at your doorstep!
+    Thank you.
+    <p>Return to <a href="{% url 'home_services:home' %}">home page</a></p>
+</body>
+</html>

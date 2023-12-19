@@ -1,0 +1,11 @@
+<h1> Service Title: {{object.Title}} </h1>
+<h2> Price: {{object.Price}} </h2> 
+{% comment %} <h3> Email: {{object.email}} </h3> {% endcomment %}
+
+
+{% comment %} {% for object in object_list %}
+    <li>
+        <a href={% url "home_services:detail" object.id %}>
+            {{object.Title}} {{object.Price}}
+    </li>
+{% endfor %} {% endcomment %}

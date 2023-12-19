@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <!-- <link rel="stylesheet" href={% static "home_services/style.css" %}> -->
+    {% comment %} <link rel="stylesheet" href={% static "user_profile/style.css" %}> {% endcomment %}
+    {% comment %} <script src="https://maps.googleapis.com/maps/api/js?key=your_api_key&libraries=places"></script> {% endcomment %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .customer {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .customer label{
+            {% comment %} color: #fff; {% endcomment %}
+            font-size: 1.3em;
+            justify-content: center;
+            display: flex;
+            margin: 5%;
+            font-weight: bold;
+            cursor: pointer;
+            transition: .5s ease-in-out;
+        }
+        .form2 {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+      
+    </style>
+</head>
+<body>
+
+    {% if has_error %}
+        {{has_error}}
+    {% endif %}
+    
+    {% comment %} <div class="provider">
+        <h2>If You are a service provider fill this form</h2>
+        <form action="{% url 'user_profile:profile_submit' %}" method="POST" class="form1">
+        {% csrf_token %}
+        {{form}}
+        <input type="submit" value="Sumbit" id="submit">
+        </form>
+    </div> {% endcomment %}
+        
+    
+    <div class="customer">
+        <h2>If you want any service fill this form</h2>
+        <form action="{% url 'home_services:customer_submit' %}" method="POST" class="form2">
+        {% csrf_token %}
+        {{customer}}
+        <input type="submit" value="Sumbit" id="submit">
+        </form>
+    </div>
+    {% comment %} <div id="locationDiv">
+        <button id="getLocationBtn" onclick="getCurrentLocation()">Get Current Location</button>
+    </div>
+
+    <script>
+        function getCurrentLocation() {
+            // Add your Google Maps embedded code or location fetching logic here
+            alert('Fetching current location...');
+        }
+    </script> {% endcomment %}
+
+</body>
+</html>

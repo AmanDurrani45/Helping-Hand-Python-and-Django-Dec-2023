@@ -1,0 +1,112 @@
+{% comment %} {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href={% static "home_services/style.css" %}>
+    <link rel="stylesheet" href={% static "user_profile/style.css" %}>
+    <title>Login</title>
+</head>
+
+<body>
+    <div class="login">
+
+        <form action="{% url 'user_profile:login' %}" method="post">
+            {% csrf_token %}
+            <h1> Login </h1>
+            {% if login_message %}<p style="color: red"><strong>{{ login_message }}</strong></p>{% endif %}
+            <label for="username">Username: </label>
+            <label for="chk" aria-hidden="true">Login</label>
+            <input type="text" name="username" placeholder="User name" required="">
+            <label for="email">Password: </label>
+            <input type="password" name="password" placeholder="Password" required="">
+			<input type="submit" value="Login" id="submit">
+        </form>
+    </div>
+
+</body>
+
+</html> {% endcomment %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .login {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 8px;
+        }
+
+        input {
+            padding: 10px;
+            margin-bottom: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: white;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .forgot-password {
+            margin-top: 10px;
+            text-align: center;
+            color: #007bff;
+            cursor: pointer;
+        }
+    </style>
+    <title>Login Page</title>
+</head>
+<body>
+    <div class="login">
+        <form action="{% url 'user_profile:login' %}" method="post">
+            {% csrf_token %}
+            <h1>Login</h1>
+            {% if login_message %}
+                <p style="color: red"><strong>{{ login_message }}</strong></p>
+            {% endif %}
+            <label for="username">Username:</label>
+            <input type="text" name="username" placeholder="User name" required="">
+            <label for="password">Password:</label>
+            <input type="password" name="password" placeholder="Password" required="">
+            <input type="submit" value="Login" id="submit">
+        </form>
+        {% comment %} <div class="forgot-password">
+            <a href="{% url 'user_profile:forgot_password' %}">Forgot Password?</a>
+        </div> {% endcomment %}
+    </div>
+</body>
+</html>
